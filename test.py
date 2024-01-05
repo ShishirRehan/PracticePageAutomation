@@ -20,103 +20,103 @@ wait = WebDriverWait(driver, 10)
 
 
 # Radio Button example
-# radio_buttons = driver.find_elements(By.XPATH, "//input[@name='radioButton']")
-# for ele in radio_buttons:
-#     if ele.get_attribute("value") == "radio2":
-#         ele.click()
-#         break
-#
-# # OR
-# driver.find_element(By.CSS_SELECTOR, "[value='radio2']").click()
-# assert driver.find_element(By.CSS_SELECTOR, "[value='radio2']").is_selected()
-# time.sleep(3)
+radio_buttons = driver.find_elements(By.XPATH, "//input[@name='radioButton']")
+for ele in radio_buttons:
+    if ele.get_attribute("value") == "radio2":
+        ele.click()
+        break
+
+# OR
+driver.find_element(By.CSS_SELECTOR, "[value='radio2']").click()
+assert driver.find_element(By.CSS_SELECTOR, "[value='radio2']").is_selected()
+time.sleep(3)
 
 
 # Suggestion class example
-# driver.find_element(By.XPATH, "//input[@id='autocomplete']").send_keys("bang")
-# time.sleep(2)
-# act.key_down(Keys.ARROW_DOWN).perform()
-# act.key_up(Keys.ARROW_DOWN).perform()
-# act.key_down(Keys.RETURN).perform()
-# act.key_up(Keys.RETURN).perform()
-# time.sleep(5)
-#
-# assert driver.find_element(By.XPATH, "//input[@id='autocomplete']").get_attribute("value") == "Bangladesh"
-#
-#
-# # Dropdown example
-# drp_down = Select(driver.find_element(By.XPATH, "//select[@id='dropdown-class-example']"))
-# drp_down.select_by_visible_text("Option2")
-#
-# time.sleep(5)
+driver.find_element(By.XPATH, "//input[@id='autocomplete']").send_keys("bang")
+time.sleep(2)
+act.key_down(Keys.ARROW_DOWN).perform()
+act.key_up(Keys.ARROW_DOWN).perform()
+act.key_down(Keys.RETURN).perform()
+act.key_up(Keys.RETURN).perform()
+time.sleep(5)
+
+assert driver.find_element(By.XPATH, "//input[@id='autocomplete']").get_attribute("value") == "Bangladesh"
+
+
+# Dropdown example
+drp_down = Select(driver.find_element(By.XPATH, "//select[@id='dropdown-class-example']"))
+drp_down.select_by_visible_text("Option2")
+
+time.sleep(5)
 
 
 # Checkbox Example
-# driver.find_element(By.XPATH, "//input[@id='checkBoxOption1']").click()
-# driver.find_element(By.XPATH, "//input[@id='checkBoxOption2']").click()
-# driver.find_element(By.XPATH, "//input[@id='checkBoxOption3']").click()
-#
-# time.sleep(2)
-# assert driver.find_element(By.XPATH, "//input[@id='checkBoxOption1']").is_selected()
-# assert driver.find_element(By.XPATH, "//input[@id='checkBoxOption2']").is_selected()
-# assert driver.find_element(By.XPATH, "//input[@id='checkBoxOption3']").is_selected()
-# time.sleep(2)
-#
-# driver.find_element(By.XPATH, "//input[@id='checkBoxOption1']").click()
-# driver.find_element(By.XPATH, "//input[@id='checkBoxOption2']").click()
-# driver.find_element(By.XPATH, "//input[@id='checkBoxOption3']").click()
-# time.sleep(2)
+driver.find_element(By.XPATH, "//input[@id='checkBoxOption1']").click()
+driver.find_element(By.XPATH, "//input[@id='checkBoxOption2']").click()
+driver.find_element(By.XPATH, "//input[@id='checkBoxOption3']").click()
+
+time.sleep(2)
+assert driver.find_element(By.XPATH, "//input[@id='checkBoxOption1']").is_selected()
+assert driver.find_element(By.XPATH, "//input[@id='checkBoxOption2']").is_selected()
+assert driver.find_element(By.XPATH, "//input[@id='checkBoxOption3']").is_selected()
+time.sleep(2)
+
+driver.find_element(By.XPATH, "//input[@id='checkBoxOption1']").click()
+driver.find_element(By.XPATH, "//input[@id='checkBoxOption2']").click()
+driver.find_element(By.XPATH, "//input[@id='checkBoxOption3']").click()
+time.sleep(2)
 
 
 # Switch Window example
-# original_window = driver.current_window_handle
-# assert len(driver.window_handles) == 1
-# driver.find_element(By.XPATH, "//button[@id='openwindow']").click()
-# windows = driver.window_handles
-# for window in windows:
-#     if window != original_window:
-#         driver.switch_to.window(window)
-#         assert driver.title == "QAClick Academy - A Testing Academy to Learn, Earn and Shine"
-#         driver.close()
-#         break
-#
-# time.sleep(3)
+original_window = driver.current_window_handle
+assert len(driver.window_handles) == 1
+driver.find_element(By.XPATH, "//button[@id='openwindow']").click()
+windows = driver.window_handles
+for window in windows:
+    if window != original_window:
+        driver.switch_to.window(window)
+        assert driver.title == "QAClick Academy - A Testing Academy to Learn, Earn and Shine"
+        driver.close()
+        break
+
+time.sleep(3)
 
 
 # Switch tab example
-# original_window = driver.current_window_handle
-# assert len(driver.window_handles) == 1
-# driver.find_element(By.XPATH, "//*[@id='opentab']").click()
-# time.sleep(2)
-# windows = driver.window_handles
-# for window in windows:
-#     if window != original_window:
-#         driver.switch_to.window(window)
-#         print(driver.title)
-#         assert driver.title == "QAClick Academy - A Testing Academy to Learn, Earn and Shine"
-#         driver.close()
-#         driver.switch_to.window(original_window)
-#         print(driver.title)
-#         break
-#
-# time.sleep(3)
+original_window = driver.current_window_handle
+assert len(driver.window_handles) == 1
+driver.find_element(By.XPATH, "//*[@id='opentab']").click()
+time.sleep(2)
+windows = driver.window_handles
+for window in windows:
+    if window != original_window:
+        driver.switch_to.window(window)
+        print(driver.title)
+        assert driver.title == "QAClick Academy - A Testing Academy to Learn, Earn and Shine"
+        driver.close()
+        driver.switch_to.window(original_window)
+        print(driver.title)
+        break
+
+time.sleep(3)
 
 
 # Switch to Alert Example
-# driver.find_element(By.CSS_SELECTOR, "#name").send_keys("Shishir")
-# assert driver.find_element(By.CSS_SELECTOR, "#name").get_attribute("value") == "Shishir"
-# time.sleep(2)
-# driver.find_element(By.CSS_SELECTOR, "#alertbtn").click()
-# alert1 = driver.switch_to.alert
-# assert alert1.text == "Hello Shishir, share this practice page and share your knowledge"
-# alert1.accept()
-# time.sleep(2)
-# driver.find_element(By.CSS_SELECTOR, "#name").send_keys("Shishir")
-# driver.find_element(By.CSS_SELECTOR, "#confirmbtn").click()
-# alert2 = driver.switch_to.alert
-# assert alert2.text == "Hello Shishir, Are you sure you want to confirm?"
-# alert2.accept()
-# time.sleep(2)
+driver.find_element(By.CSS_SELECTOR, "#name").send_keys("Shishir")
+assert driver.find_element(By.CSS_SELECTOR, "#name").get_attribute("value") == "Shishir"
+time.sleep(2)
+driver.find_element(By.CSS_SELECTOR, "#alertbtn").click()
+alert1 = driver.switch_to.alert
+assert alert1.text == "Hello Shishir, share this practice page and share your knowledge"
+alert1.accept()
+time.sleep(2)
+driver.find_element(By.CSS_SELECTOR, "#name").send_keys("Shishir")
+driver.find_element(By.CSS_SELECTOR, "#confirmbtn").click()
+alert2 = driver.switch_to.alert
+assert alert2.text == "Hello Shishir, Are you sure you want to confirm?"
+alert2.accept()
+time.sleep(2)
 
 
 # Element Displayed Example
