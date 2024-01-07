@@ -68,37 +68,36 @@ driver.find_element(By.XPATH, "//input[@id='checkBoxOption3']").click()
 time.sleep(2)
 
 
-# Switch Window example
-original_window = driver.current_window_handle
-assert len(driver.window_handles) == 1
-driver.find_element(By.XPATH, "//button[@id='openwindow']").click()
-windows = driver.window_handles
-for window in windows:
-    if window != original_window:
-        driver.switch_to.window(window)
-        assert driver.title == "QAClick Academy - A Testing Academy to Learn, Earn and Shine"
-        driver.close()
-        break
-
-time.sleep(3)
+# # Switch Window example
+# original_window = driver.current_window_handle
+# assert len(driver.window_handles) == 1
+# driver.find_element(By.XPATH, "//button[@id='openwindow']").click()
+# windows = driver.window_handles
+# for window in windows:
+#     if window != original_window:
+#         driver.switch_to.window(window)
+#         assert driver.title == "QAClick Academy - A Testing Academy to Learn, Earn and Shine"
+#         driver.close()
+#         break
+#
+# time.sleep(3)
 
 
 # Switch tab example
-original_window = driver.current_window_handle
+main_window = driver.current_window_handle
 assert len(driver.window_handles) == 1
 driver.find_element(By.XPATH, "//*[@id='opentab']").click()
 time.sleep(2)
 windows = driver.window_handles
 for window in windows:
-    if window != original_window:
+    if window != main_window:
         driver.switch_to.window(window)
         print(driver.title)
         assert driver.title == "QAClick Academy - A Testing Academy to Learn, Earn and Shine"
         driver.close()
-        driver.switch_to.window(original_window)
-        print(driver.title)
         break
-
+driver.switch_to.window(main_window)
+print(driver.title)
 time.sleep(3)
 
 
@@ -156,3 +155,47 @@ for r in range(1, rownum+1):
 real_amount = driver.find_element(By.CSS_SELECTOR, ".totalAmount").text
 
 assert str(total_amount) in real_amount
+
+
+# MouseHover Example
+act.move_to_element(driver.find_element(By.CSS_SELECTOR, "#mousehover")).click().perform()
+time.sleep(3)
+act.click(driver.find_element(By.XPATH, "//div[@class='mouse-hover-content']/a[1]")).perform()
+time.sleep(3)
+act.move_to_element(driver.find_element(By.CSS_SELECTOR, "#mousehover")).click().perform()
+time.sleep(1)
+act.click(driver.find_element(By.XPATH, "//div[@class='mouse-hover-content']/a[2]")).perform()
+
+
+# Iframe example
+driver.switch_to.frame(driver.find_element(By.XPATH, "//iframe[@id='courses-iframe']"))
+time.sleep(2)
+driver.find_element(By.XPATH, "/html/body/div/header/div[3]/div/div/div[2]/nav/div[2]/ul/li[6]").click()
+time.sleep(2)
+driver.find_element(By.XPATH, "//input[@id='username']").send_keys("Shishir")
+time.sleep(2)
+driver.find_element(By.XPATH, "//input[@id='mobileno']").send_keys("0123456789")
+time.sleep(2)
+driver.find_element(By.XPATH, "//input[@id='email']").send_keys("shishir@email.com")
+time.sleep(2)
+driver.find_element(By.XPATH, "//textarea[@id='requirements']").send_keys(
+    "Hi. This is Shishir Rehan. Currently I'm learning SQA Engineering")
+time.sleep(2)
+select_program = Select(driver.find_element(By.XPATH, "//select[@id='programming-language']"))
+select_program.select_by_visible_text("python")
+time.sleep(2)
+radio_btn = driver.find_elements(By.XPATH, "//input[@id='sharing']")
+for ele in radio_btn:
+    if ele.get_attribute("value") == "no":
+        ele.click()
+        break
+time.sleep(2)
+timezone = Select(driver.find_element(By.XPATH, "//select[@id='timezone']"))
+timezone.select_by_visible_text("(GMT+06:00) Astana, Dhaka")
+time.sleep(2)
+radio_2 = driver.find_elements(By.XPATH, "//input[@id='afford']")
+for element in radio_2:
+    if element.get_attribute("value") == "no":
+        element.click()
+        break
+time.sleep(2)
